@@ -1,6 +1,7 @@
 # Bioinf576-Project
 
 Objective: Provide a one-stop, intelligent RNA-Seq differential expression analysis tool for non-programming users.
+
 -Input: Raw gene expression data from Bulk RNA Seq.
 
 -Output: Significant different gene between different conditions calculation report and the gene expression heatmap. 
