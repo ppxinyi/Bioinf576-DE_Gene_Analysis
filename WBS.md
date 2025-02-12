@@ -13,31 +13,46 @@
 - **2.2 Normalization Methods**
   - Apply DESeq2's variance stabilizing transformation (VST) or regularized log transformation (rlog).
 - **2.3 Batch Effect Correction**
-  - Integrate Combat-Seq for batch effect correction.
+  - Integrate Combat-Seq for batch effect correction
 
 ## 3. PCA & Differential Expression Analysis (Week 3)
 - **3.1 Principal Component Analysis (PCA)**
   - Compute and visualize PCA for quality assessment.
-- **3.2 Differential Expression Analysis**
+  - if smaples doen't clustered by conditions, find some other function to fix batch effect.
+    
+## 4. Differential Expression Analysis (Week 3)
+- **4.1 Differential Expression Analysis**
   - choose suitable statistic method to calculate the expression counts between different conditions
   - Generate results as a table with adjusted p-values and log fold changes.
   - Using p-value combined with log2 fold changes to select significant genes
 
-## 4. Interactive Visualization (Week 4)
-- **4.1 Gene Expression Heatmap**
+## 5. Interactive Visualization (Week 4)
+- **5.1 Gene Expression Heatmap**
   - Create an interactive heatmap using Plotly/Seaborn.
-- **4.2 Volcano Plot**
+- **5.2 Volcano Plot**
   - Visualize significantly differentially expressed genes.
 
+## 6. Gene notation (Week 5)
+- **6.1 Gene ID Conversion**
+  - Convert gene IDs using databases like org.Hs.eg.db.
+  - Ensure consistency of gene identifiers.
+  - Annotate genes with GO terms and pathway information.
 
-## 5. Testing & Documentation (Week 5)
-- **5.1 Testing**
+## 7. Testing & Documentation (Week 5)
+- **7.1 Testing**
   - Conduct unit testing and user testing.
-- **6.2 Documentation**
+- **7.2 Documentation**
   - Provide user guides and API documentation.
+    
+## 8. Compare with GSEA Analysis result (Week 6)
+- **8.1 GSEA Analysis Comparison**
+  - Compare differentially expressed genes with enriched pathways from GSEA.
 
-## 6. Final Review & Launch (Week 6)
-- **6.1 Review & Optimization**
+## 9. Final Review & Launch (Week 6)
+- **9.1 Review & Optimization**
   - Optimize performance and fix bugs.
-- **6.2 Launch & User Feedback Collection**
+- **9.2 Launch & User Feedback Collection**
   - Release the tool and gather feedback for improvements.
+    
+
+
