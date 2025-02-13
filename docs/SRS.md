@@ -14,7 +14,7 @@ The tool will accept RNA-Seq **count matrices** in the following formats:
 ### 1.2 Preprocessing Requirements  
 Before differential expression analysis, the following preprocessing steps are required:  
 1. **Remove genes with low counts** (e.g., genes with counts <10 in all samples).  
-2. **Normalize counts** using DESeq2’s variance stabilizing transformation (VST).  
+2. **Normalize counts** 
 3. **Perform quality control (QC)** to filter out poor-quality samples.  
 
 ### 1.3 Expected Dataset Size  
