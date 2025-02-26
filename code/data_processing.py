@@ -64,24 +64,11 @@ def compute_z_scores(expression_df: pd.DataFrame) -> pd.DataFrame:
   def log_transform(expression_df: pd.DataFrame) -> pd.DataFrame:
     """
     Apply log2 transformation to gene expression data to reduce skewness.
-    
-    Args:
-        expression_df (pd.DataFrame): Normalized gene expression data.
-    
-    Returns:
-        pd.DataFrame: Log2-transformed expression matrix.
     """
     return np.log2(expression_df + 1)
   def detect_outliers(expression_df: pd.DataFrame, threshold: float = 3.0) -> pd.DataFrame:
         """
         Identify outlier samples based on Z-score.
-        
-        Args:
-            expression_df (pd.DataFrame): Normalized gene expression data.
-            threshold (float): Z-score threshold above which a sample is considered an outlier.
-        
-        Returns:
-            pd.DataFrame: Boolean mask indicating which samples contain outliers.
         """
      z_scores = (expression_df - expression_df.mean()) / expression_df.std()
      return (z_scores.abs() > threshold)
