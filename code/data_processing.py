@@ -35,3 +35,54 @@ def normalize_counts(counts_df: pd.DataFrame, method="raw") -> pd.DataFrame:
         raise ValueError("Unsupported normalization method. Choose 'TPM' or 'FPKM'.")
 
     return normalized_df
+def compute_z_scores(expression_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Compute Z-scores for gene expression data.
+
+    Args:
+        expression_df (pd.DataFrame): DataFrame with expression values (genes as rows, samples as columns).
+    
+    Returns:
+        pd.DataFrame: DataFrame with Z-score normalized values.
+    """
+    return (expression_df - expression_df.mean(axis=1, keepdims=True)) / expression_df.std(axis=1, keepdims=True)
+
+ def filter_low_variance_genes(expression_df: pd.DataFrame, threshold: float = 0.1) -> pd.DataFrame:
+    """
+    Remove genes with low variance across samples.
+    
+    Args:
+        expression_df (pd.DataFrame): Normalized gene expression data.
+        threshold (float): Minimum variance required to retain a gene.
+    
+    Returns:
+        pd.DataFrame: Filtered expression matrix with only high-variance genes.
+    """
+    variances = expression_df.var(axis=1)
+    return expression_df.loc[variances > threshold]
+     
+  def log_transform(expression_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Apply log2 transformation to gene expression data to reduce skewness.
+    
+    Args:
+        expression_df (pd.DataFrame): Normalized gene expression data.
+    
+    Returns:
+        pd.DataFrame: Log2-transformed expression matrix.
+    """
+    return np.log2(expression_df + 1)
+  def detect_outliers(expression_df: pd.DataFrame, threshold: float = 3.0) -> pd.DataFrame:
+        """
+        Identify outlier samples based on Z-score.
+        
+        Args:
+            expression_df (pd.DataFrame): Normalized gene expression data.
+            threshold (float): Z-score threshold above which a sample is considered an outlier.
+        
+        Returns:
+            pd.DataFrame: Boolean mask indicating which samples contain outliers.
+        """
+     z_scores = (expression_df - expression_df.mean()) / expression_df.std()
+     return (z_scores.abs() > threshold)
+
