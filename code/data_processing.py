@@ -1,5 +1,5 @@
 """
-Module: Data Processing
+Module: Data Processing and preprocessing
 Author: Xinyi Deng
 Description: This module contains functions for processing RNA-Seq data.
 """
