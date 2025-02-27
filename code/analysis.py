@@ -1,3 +1,7 @@
+"""
+Module: Run Deseq2 
+Author: Xinyi Deng
+"""
 import rpy2.robjects as ro
 
 def run_deseq2(counts_df, col_data, design_formula="~ condition"):
