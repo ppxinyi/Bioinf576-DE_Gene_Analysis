@@ -12,6 +12,7 @@
   - Perform log transformation.
 - **2.2 Normalization Methods**
   - Apply DESeq2's variance stabilizing transformation (VST) or regularized log transformation (rlog).
+  - Apply some other normalized method(like 
 - **2.3 Batch Effect Correction**
   - Integrate Combat-Seq for batch effect correction
 
