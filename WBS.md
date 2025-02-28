@@ -47,6 +47,7 @@
     
 ## 8. Compare with GSEA Analysis result (Week 6)
 - **8.1 GSEA Analysis Comparison**
+  -  based on the DEG table, add functional enrichment analysis function.
   - Compare differentially expressed genes with enriched pathways from GSEA.
 
 ## 9. Final Review & Launch (Week 6)
