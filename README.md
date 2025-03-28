@@ -22,6 +22,6 @@ Project Lifecycle
 ## Toturil 
 You can view the example demo of how to use this tool with sample data in this Jupyter notebook:
 
-📎 [Happy Path Demo Notebook](./tutorials/happy_path_demo.ipynb)
+📎 [Happy Path Demo Notebook](./tutorials/happy_path_demo.py)
 
 This notebook showcases the entire pipeline — from loading raw counts and metadata to normalization, filtering, and running DESeq2 to obtain differentially expressed genes.
