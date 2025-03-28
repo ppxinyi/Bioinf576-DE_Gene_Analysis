@@ -19,3 +19,9 @@ Project Lifecycle
 4.	Interactive visualizations (heatmaps, volcano plots).
 1 weeks per milestone.
 
+## Toturil 
+You can view the example demo of how to use this tool with sample data in this Jupyter notebook:
+
+📎 [Happy Path Demo Notebook](./tutorials/happy_path_demo.ipynb)
+
+This notebook showcases the entire pipeline — from loading raw counts and metadata to normalization, filtering, and running DESeq2 to obtain differentially expressed genes.
