@@ -57,6 +57,7 @@
   - Optimize performance and fix bugs.
 - **9.2 Launch & User Feedback Collection**
   - Release the tool and gather feedback for improvements.
+  - Create the demo and toturial for package
     
 
 
