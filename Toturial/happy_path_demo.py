@@ -47,9 +47,10 @@ z_expr = filter_low_variance_genes(z_expr)
 ### 📐 Step 4: Differential Expression Analysis
 
 ```python
-group_col = "fusion"
+group_col = "fusion"  # or "integration", "type"
 group_labels = sample_info[group_col]
-deg_df = differential_expression(log_expr, group_labels, method="ttest")
+method = suggest_test_method(group_labels)
+deg_df = differential_expression(log_expr, group_labels, method=method)
 deg_df.head()
 ```
 
