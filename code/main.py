@@ -1,5 +1,5 @@
 """
-Script: happy_path_demo.py
+Script: main.py
 Author: Xinyi Deng
 Description: Full RNA-seq DEG pipeline with command-line support using argparse.
 """
