@@ -5,7 +5,7 @@ This document describes the RNA-Seq datasets used in the project for differentia
 ### **2.1 Public Datasets**  
 - **GSE102073 (GEO Database)**  
   - **Description**: RNA-Seq dataset from head and neck cancer patients.  
-  - **Format**: Raw count matrix (CSV).  
+  - **Format**: Normalized count matrix (CSV).  
   - **URL**: [GSE102073](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE102073)  
 
 
