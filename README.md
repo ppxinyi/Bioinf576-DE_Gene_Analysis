@@ -18,7 +18,8 @@ Project Lifecycle
 3.	PCA and differential analysis.
 4.	Interactive visualizations (heatmaps, volcano plots).
 1 weeks per milestone.
-
+## install
+- pip install -r requirements.txt
 ## Toturial 
 You can view the example demo of how to use this tool with sample data in this Jupyter notebook:
 
