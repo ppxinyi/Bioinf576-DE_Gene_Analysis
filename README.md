@@ -29,6 +29,7 @@ You can view the example demo of how to use this tool with sample data in this J
 📎 [Happy Path Demo Notebook](./Tutorials/happy_path_demo.py)
 Running Example：
 
-<pre> ```bash python happy_path_demo.py \ --expression expression_matrix.csv \ --sample_info sample_info.csv \ --group_col fusion \ --data_type raw \ --method ttest ``` </pre>
+<pre> ```bash 
+  python happy_path_demo.py --expression expression_matrix.csv --sample_info sample_info.csv --group_col fusion --data_type raw --method ttest ``` </pre>
 
 This notebook showcases the entire pipeline — from loading raw counts and metadata to normalization, filtering, and running DESeq2 to obtain differentially expressed genes.
