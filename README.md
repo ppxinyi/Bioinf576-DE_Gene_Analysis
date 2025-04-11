@@ -19,11 +19,13 @@ Project Lifecycle
 4.	Interactive visualizations (heatmaps, volcano plots).
 1 weeks per milestone.
 
-## Toturil 
+## Toturial 
 You can view the example demo of how to use this tool with sample data in this Jupyter notebook:
 
 📎 [Happy Path Demo Notebook](./Tutorials/happy_path_demo.py)
 Running Example：
+
+
 python happy_path_demo.py \
   --expression expression_matrix.csv \
   --sample_info sample_info.csv \
