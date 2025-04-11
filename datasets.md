@@ -8,5 +8,4 @@ This document describes the RNA-Seq datasets used in the project for differentia
   - **Format**: Raw count matrix (CSV).  
   - **URL**: [GSE102073](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE102073)  
 
-### **2.2 Lab Datasets
-- uploadoing on /home/ppxinyi/Bioinf576/
+
