@@ -1,4 +1,4 @@
-name: rna-pipeline
+name: DE
 channels:
   - defaults
   - conda-forge
