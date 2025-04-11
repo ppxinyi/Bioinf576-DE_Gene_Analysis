@@ -29,8 +29,8 @@ def main():
     parser.add_argument("--sample_info", required=True, help="Path to sample metadata CSV file.")
     parser.add_argument("--group_col", default="integration", help="Column in metadata to group by (e.g., integration, fusion).")
     parser.add_argument("--data_type", choices=["raw", "normalized"], default="raw", help="Specify whether expression data is raw counts or already normalized.")
-    parser.add_argument("--method", default="ttest", help="Statistical test to use: ttest, wilcoxon, anova, kruskal.")
-    
+    parser.add_argument("--method", default=None, help="Statistical test to use. Options: ttest, wilcoxon, anova, kruskal. Leave blank to auto-select.")
+
     args = parser.parse_args()
     
     # === Load expression matrix and sample metadata ===
@@ -52,11 +52,15 @@ def main():
     # === Z-score normalization and low-variance gene filtering ===
     z_expr = compute_z_scores(log_expr)
     z_expr = filter_low_variance_genes(z_expr)
-    print(f"🧼 Retained {z_expr.shape[0]} genes after variance filtering.")
+    print(f" Retained {z_expr.shape[0]} genes after variance filtering.")
     
     # === Differential expression analysis ===
     group_labels = sample_info[args.group_col]
-    deg_df = differential_expression(log_expr, group_labels, method=args.method)
+    if args.method is None:
+        method = suggest_test_method(group_labels)
+    else:
+        method = args.method
+    deg_df = differential_expression(log_expr, group_labels, method=method)
     
     # === Save DEG result table ===
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
