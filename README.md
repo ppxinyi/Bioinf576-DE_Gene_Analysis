@@ -28,6 +28,12 @@ Running Example：
   python main.py --expression expression_matrix.csv --sample_info sample_info.csv --group_col fusion --data_type raw --method ttest ``` </pre>
 
 
+Argument	Description
+--expression	Path to expression matrix CSV file (genes x samples)
+--sample_info	Path to sample metadata CSV file (must contain Sample col)
+--group_col	Column in metadata used to group samples (e.g., fusion)
+--data_type	Either raw (raw counts) or normalized (already log2)
+--method	Statistical test to use: ttest, wilcoxon, anova, kruskal
 
 ## Toturial 
 You can view the example demo of how to use this tool with sample data in this Jupyter notebook:
