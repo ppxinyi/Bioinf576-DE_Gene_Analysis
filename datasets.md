@@ -9,3 +9,5 @@ This document describes the RNA-Seq datasets used in the project for differentia
   - **URL**: [GSE102073](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE102073)  
 
 
+### **2.2 Example Datasets**  
+- Uploaded in datasets
