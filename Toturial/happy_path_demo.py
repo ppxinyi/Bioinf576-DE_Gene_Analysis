@@ -96,8 +96,5 @@ This pipeline enables the identification of potential biomarkers and pathways in
 
 ### ✅ Conclusion
 This notebook demonstrates how to:
-- Load RNA-seq data
 - Run differential expression testing
 - Visualize and interpret the output
-
-It is a robust and reproducible pipeline that can be reused for various transcriptomic comparisons in biomedical research.
