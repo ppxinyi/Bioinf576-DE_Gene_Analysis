@@ -25,7 +25,7 @@ Project Lifecycle
 Running Example：
 
 <pre> ```bash 
-  python happy_path_demo.py --expression expression_matrix.csv --sample_info sample_info.csv --group_col fusion --data_type raw --method ttest ``` </pre>
+  python main.py --expression expression_matrix.csv --sample_info sample_info.csv --group_col fusion --data_type raw --method ttest ``` </pre>
 
 
 
