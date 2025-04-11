@@ -18,18 +18,20 @@ Project Lifecycle
 3.	PCA and differential analysis.
 4.	Interactive visualizations (heatmaps, volcano plots).
 1 weeks per milestone.
-## install
+## Install
 - conda env create -f environment.yml
 - conda activate DE
+## Run
+Running Example：
+
+<pre> ```bash 
+  python happy_path_demo.py --expression expression_matrix.csv --sample_info sample_info.csv --group_col fusion --data_type raw --method ttest ``` </pre>
+
 
 
 ## Toturial 
 You can view the example demo of how to use this tool with sample data in this Jupyter notebook:
 
-📎 [Happy Path Demo Notebook](./Tutorials/happy_path_demo.py)
-Running Example：
-
-<pre> ```bash 
-  python happy_path_demo.py --expression expression_matrix.csv --sample_info sample_info.csv --group_col fusion --data_type raw --method ttest ``` </pre>
+📎 [Happy Path Demo Notebook](./Tutorial/happy_path_demo.py)
 
 This notebook showcases the entire pipeline — from loading raw counts and metadata to normalization, filtering, and running DESeq2 to obtain differentially expressed genes.
