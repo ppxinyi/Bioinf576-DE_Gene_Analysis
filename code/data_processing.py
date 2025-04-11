@@ -74,3 +74,20 @@ def log_transform(expression_df: pd.DataFrame) -> pd.DataFrame:
         pd.DataFrame: Log2 transformed expression data.
     """
     return np.log2(expression_df + 1)
+def load_data(expression_path: str, sample_info_path: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Load expression matrix and sample metadata from CSV files.
+
+    Args:
+        expression_path (str): Path to the expression matrix CSV.
+        sample_info_path (str): Path to the sample info CSV.
+
+    Returns:
+        tuple: (expression_df, sample_info_df) both as pandas DataFrames.
+    """
+    expression_df = pd.read_csv(expression_path, index_col=0)
+    sample_info_df = pd.read_csv(sample_info_path)
+    sample_info_df = sample_info_df.set_index("Sample")
+    # Align columns
+    expression_df = expression_df.loc[:, sample_info_df.index]
+    return expression_df, sample_info_df
