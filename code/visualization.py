@@ -63,3 +63,58 @@ def plot_heatmap(
     print(f"✅ Heatmap automatically saved to: {filename}")
 
     plt.show()
+    
+def plot_volcano(deg_df, log2fc_thresh=1, pval_thresh=0.05, title="Volcano Plot"):
+    deg_df = deg_df.copy()
+    deg_df["-log10(pval)"] = -np.log10(deg_df["adj_pval"])
+    deg_df["significant"] = (deg_df["adj_pval"] < pval_thresh) & (abs(deg_df["log2FC"]) > log2fc_thresh)
+
+    plt.figure(figsize=(8, 6))
+    sns.scatterplot(data=deg_df, x="log2FC", y="-log10(pval)", hue="significant",
+                    palette={True: "red", False: "grey"}, edgecolor=None, s=25)
+    plt.axvline(x=log2fc_thresh, color="black", linestyle="--", linewidth=1)
+    plt.axvline(x=-log2fc_thresh, color="black", linestyle="--", linewidth=1)
+    plt.axhline(y=-np.log10(pval_thresh), color="black", linestyle="--", linewidth=1)
+    plt.title(title)
+    plt.xlabel("log2 Fold Change")
+    plt.ylabel("-log10 Adjusted P-value")
+    plt.tight_layout()
+    filename = f"volcano_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+    plt.savefig(filename)
+    print(f"✅ Volcano plot saved as {filename}")
+    plt.show()
+
+
+def plot_pca(expression_df, sample_info, group_col="integration", title="PCA Plot"):
+    pca = PCA(n_components=2)
+    pcs = pca.fit_transform(expression_df.T)
+    pca_df = pd.DataFrame(pcs, columns=["PC1", "PC2"], index=expression_df.columns)
+    pca_df[group_col] = sample_info.set_index("Sample").loc[pca_df.index, group_col]
+
+    plt.figure(figsize=(8, 6))
+    sns.scatterplot(data=pca_df, x="PC1", y="PC2", hue=group_col, palette="Set2", s=80)
+    plt.title(title)
+    plt.xlabel(f"PC1 ({pca.explained_variance_ratio_[0]*100:.1f}%)")
+    plt.ylabel(f"PC2 ({pca.explained_variance_ratio_[1]*100:.1f}%)")
+    plt.tight_layout()
+    filename = f"pca_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+    plt.savefig(filename)
+    print(f"✅ PCA plot saved as {filename}")
+    plt.show()
+
+
+def plot_gene_boxplot(expression_df, gene_name, sample_info, group_col="integration", title=None):
+    df = pd.DataFrame({
+        "expression": expression_df.loc[gene_name],
+        group_col: sample_info.set_index("Sample").loc[expression_df.columns, group_col]
+    }).reset_index(drop=True)
+
+    plt.figure(figsize=(6, 4))
+    sns.boxplot(data=df, x=group_col, y="expression", palette="Set2")
+    sns.stripplot(data=df, x=group_col, y="expression", color="black", size=4, jitter=0.15)
+    plt.title(title if title else f"Expression of {gene_name}")
+    plt.tight_layout()
+    filename = f"boxplot_{gene_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+    plt.savefig(filename)
+    print(f"✅ Boxplot saved as {filename}")
+    plt.show()
