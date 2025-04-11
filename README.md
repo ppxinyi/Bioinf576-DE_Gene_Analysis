@@ -19,7 +19,10 @@ Project Lifecycle
 4.	Interactive visualizations (heatmaps, volcano plots).
 1 weeks per milestone.
 ## install
-- pip install -r requirements.txt
+- conda env create -f environment.yml
+- conda activate DE
+
+
 ## Toturial 
 You can view the example demo of how to use this tool with sample data in this Jupyter notebook:
 
