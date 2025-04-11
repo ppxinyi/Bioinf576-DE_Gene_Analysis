@@ -1,10 +1,9 @@
 # Happy Path RNA-seq DEG Analysis Tutorial
 
 ### 🧪 Goal of the Tutorial
-In this tutorial, we demonstrate a complete RNA-seq data analysis pipeline to identify differentially expressed genes (DEGs) across sample groups. We aim to answer the biological question:
-
-> *Are there significantly differentially expressed genes between tumor samples with and without gene fusion events?*
-
+In this tutorial, we demonstrate a complete RNA-seq data analysis pipeline to identify differentially expressed genes (DEGs) across sample groups. 
+**Biological Question:**
+Are there specific genes or pathways significantly dysregulated in subtypes samples?
 ---
 
 ### 📊 Dataset Description
