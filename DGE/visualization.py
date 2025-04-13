@@ -95,7 +95,7 @@ def plot_pca(expression_df, sample_info, group_col="integration", title="PCA Plo
     pca = PCA(n_components=2)
     pcs = pca.fit_transform(expression_df.T)
     pca_df = pd.DataFrame(pcs, columns=["PC1", "PC2"], index=expression_df.columns)
-    pca_df[group_col] = sample_info.set_index("Sample").loc[pca_df.index, group_col]
+    pca_df[group_col] = sample_info.loc[pca_df.index, group_col]
 
     plt.figure(figsize=(8, 6))
     sns.scatterplot(data=pca_df, x="PC1", y="PC2", hue=group_col, palette="Set2", s=80)
