@@ -6,6 +6,7 @@ Description: Full RNA-seq DEG pipeline with command-line support using argparse.
 
 import argparse
 import pandas as pd
+import numpy as np
 from datetime import datetime
 from .data_processing  import (
     load_data,
