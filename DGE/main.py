@@ -85,9 +85,6 @@ def main():
         plot_gene_boxplot(log_expr, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
     else:
         print("⚠️ No significant DEGs found. Using top 20 genes by lowest adjusted p-value instead.")
-        deg_df_all = pd.DataFrame(results, columns=["gene", "log2FC", "pval"]).set_index("gene")
-        deg_df_all["adj_pval"] = deg_df_all["pval"] * len(deg_df_all)
-        deg_df_all = deg_df_all.sort_values("adj_pval")
-        top_genes = deg_df_all.head(20).index.tolist()
+        top_genes = deg_df.sort_values("adj_pval").head(20).index.tolist()
 if __name__ == "__main__":
     main()
