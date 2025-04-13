@@ -14,7 +14,7 @@ from .data_processing  import (
     compute_z_scores,
     filter_low_variance_genes,
 )
-from .analysis import differential_expression
+from .analysis import differential_expression, suggest_test_method
 from .visualization import (
     plot_heatmap,
     plot_volcano,
