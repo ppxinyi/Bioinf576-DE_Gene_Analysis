@@ -15,7 +15,7 @@ from data_processing import (
     filter_low_variance_genes,
 )
 from analysis import differential_expression
-from visual import (
+from visualization import (
     plot_heatmap,
     plot_volcano,
     plot_pca,
