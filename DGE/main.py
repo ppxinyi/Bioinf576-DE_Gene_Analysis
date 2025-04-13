@@ -60,14 +60,16 @@ def main():
         method = suggest_test_method(group_labels)
     else:
         method = args.method
-    deg_df = differential_expression(log_expr, group_labels, method=method)
+    deg_df, full_df = differential_expression(log_expr, group_labels, method=method)
     
     # === Save DEG result table ===
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     deg_filename = f"DEG_{args.group_col}_{timestamp}.csv"
     deg_df.to_csv(deg_filename)
     print(f"📄 DEG results saved to: {deg_filename}")
-    
+    full_filename = f"DEG_full_{args.group_col}_{timestamp}.csv"
+    full_df.to_csv(full_filename)
+    print(f"🧾 Full DEG result saved to: {full_filename}")
     # === Visualization ===
     if deg_df.shape[0] > 0:
         top_genes = deg_df.head(20).index.tolist()
@@ -86,5 +88,16 @@ def main():
     else:
         print("⚠️ No significant DEGs found. Using top 20 genes by lowest adjusted p-value instead.")
         top_genes = deg_df.sort_values("adj_pval").head(20).index.tolist()
+        print("Generating heatmap...")
+        plot_heatmap(z_expr, top_genes, metadata=sample_info, group_col=args.group_col)
+    
+        print("Generating volcano plot...")
+        plot_volcano(deg_df, title=f"Volcano Plot - {args.group_col}")
+    
+        print("Generating PCA plot...")
+        plot_pca(z_expr, sample_info, group_col=args.group_col)
+    
+        print(f"Generating boxplot for top DEG: {deg_df.index[0]}")
+        plot_gene_boxplot(log_expr, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
 if __name__ == "__main__":
     main()
