@@ -117,5 +117,5 @@ def differential_expression(expression_df: pd.DataFrame, group_labels: pd.Series
     else:
         sig_df = res_df[res_df["adj_pval"] < pval_thresh]
 
-    return sig_df.sort_values("adj_pval")
+    return sig_df.sort_values("adj_pval"), res_df
 
