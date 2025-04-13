@@ -74,6 +74,10 @@ def differential_expression(expression_df: pd.DataFrame, group_labels: pd.Series
 
         if num_groups == 2:
             g1, g2 = values
+            g1 = g1.dropna()
+            g2 = g2.dropna()
+            if len(g1) == 0 or len(g2) == 0:
+                continue
             log2fc = np.log2(g2.mean() + 1) - np.log2(g1.mean() + 1)
 
             if method == "ttest":
