@@ -112,7 +112,7 @@ def plot_pca(expression_df, sample_info, group_col="integration", title="PCA Plo
 def plot_gene_boxplot(expression_df, gene_name, sample_info, group_col="integration", title=None):
     df = pd.DataFrame({
         "expression": expression_df.loc[gene_name],
-        group_col: sample_info.set_index("Sample").loc[expression_df.columns, group_col]
+        group_col: sample_info.loc[expression_df.columns, group_col]
     }).reset_index(drop=True)
 
     plt.figure(figsize=(6, 4))
