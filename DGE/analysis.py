@@ -91,6 +91,16 @@ def differential_expression(expression_df: pd.DataFrame, group_labels: pd.Series
             results.append((gene, log2fc, pval))
 
         else:
+            values = [v[~np.isnan(v)] for v in values]
+
+            # skip any empty group
+            if any(len(v) == 0 for v in values):
+                continue
+
+            # skip if all values are the same (kruskal/f_oneway will crash)
+            all_values = np.concatenate(values)
+            if np.all(all_values == all_values[0]):
+                continue
             if method == "anova":
                 stat, pval = f_oneway(*values)
             elif method == "kruskal":
