@@ -72,30 +72,30 @@ def main():
     print(f"🧾 Full DEG result saved to: {full_filename}")
     # === Visualization ===
     if deg_df.shape[0] > 0:
-        top_genes = deg_df.head(20).index.tolist()
+        top_genes = deg_df.index.tolist()
     
         print("Generating heatmap...")
         plot_heatmap(expression_df, top_genes, metadata=sample_info, group_col=args.group_col)
     
         print("Generating volcano plot...")
-        plot_volcano(expression_df, title=f"Volcano Plot - {args.group_col}")
+        plot_volcano(deg_df, title=f"Volcano Plot - {args.group_col}")
     
         print("Generating PCA plot...")
-        plot_pca(expression_df, sample_info, group_col=args.group_col)
+        plot_pca(z_expr, sample_info, group_col=args.group_col)
     
         print(f"Generating boxplot for top DEG: {deg_df.index[0]}")
         plot_gene_boxplot(expression_df, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
     else:
         print("⚠️ No significant DEGs found. Using top 20 genes by lowest adjusted p-value instead.")
-        top_genes = deg_df.sort_values("adj_pval").head(20).index.tolist()
+        top_genes = full_df.sort_values("adj_pval").head(20).index.tolist()
         print("Generating heatmap...")
         plot_heatmap(expression_df, top_genes, metadata=sample_info, group_col=args.group_col)
     
         print("Generating volcano plot...")
-        plot_volcano(expression_df, title=f"Volcano Plot - {args.group_col}")
+        plot_volcano(full_df, title=f"Volcano Plot - {args.group_col}")
     
         print("Generating PCA plot...")
-        plot_pca(expression_df, sample_info, group_col=args.group_col)
+        plot_pca(z_expr, sample_info, group_col=args.group_col)
     
         print(f"Generating boxplot for top DEG: {deg_df.index[0]}")
         plot_gene_boxplot(expression_df, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
