@@ -7,15 +7,15 @@ Description: Full RNA-seq DEG pipeline with command-line support using argparse.
 import argparse
 import pandas as pd
 from datetime import datetime
-from data_processing import (
+from .data_processing  import (
     load_data,
     normalize_counts,
     log_transform,
     compute_z_scores,
     filter_low_variance_genes,
 )
-from analysis import differential_expression
-from visualization import (
+from .analysis import differential_expression
+from .visualization import (
     plot_heatmap,
     plot_volcano,
     plot_pca,
