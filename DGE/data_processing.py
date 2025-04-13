@@ -40,14 +40,11 @@ def normalize_counts(counts_df: pd.DataFrame, gene_lengths: pd.Series, method="r
 def compute_z_scores(expression_df: pd.DataFrame) -> pd.DataFrame:
     """
     Compute Z-scores for gene expression data.
-
-    Args:
-        expression_df (pd.DataFrame): DataFrame with expression values (genes as rows, samples as columns).
-    
-    Returns:
-        pd.DataFrame: DataFrame with Z-score normalized values.
+    Z = (X - mean) / std for each gene across samples.
     """
-    return (expression_df - expression_df.mean(axis=1, keepdims=True)) / expression_df.std(axis=1, keepdims=True)
+    mean = expression_df.mean(axis=1)
+    std = expression_df.std(axis=1)
+    return expression_df.sub(mean, axis=0).div(std, axis=0)
 
 def filter_low_variance_genes(expression_df: pd.DataFrame, threshold: float = 0.1) -> pd.DataFrame:
     """
