@@ -1,5 +1,5 @@
 """
-Module: Run Deseq2 
+Module: Analyse DE Genes
 Author: Xinyi Deng
 """
 
