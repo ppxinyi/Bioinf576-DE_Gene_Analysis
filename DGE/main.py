@@ -65,10 +65,10 @@ def main():
     # === Save DEG result table ===
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     deg_filename = f"DEG_{args.group_col}_{timestamp}.csv"
-    deg_df.to_csv(deg_filename)
+    deg_df.reset_index().to_csv(deg_filename, index=False)
     print(f"📄 DEG results saved to: {deg_filename}")
     full_filename = f"DEG_full_{args.group_col}_{timestamp}.csv"
-    full_df.to_csv(full_filename)
+    full_df.reset_index().to_csv(full_filename, index=False)
     print(f"🧾 Full DEG result saved to: {full_filename}")
     # === Visualization ===
     if deg_df.shape[0] > 0:
