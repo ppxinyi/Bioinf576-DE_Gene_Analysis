@@ -100,7 +100,7 @@ def main():
         
         print(f"Generating boxplot for top DEG: {deg_df.index[0]}")
         print("⚠️ No genes available for boxplot. Using top 5 genes by lowest adjusted p-value instead.")
-        top5_genes = full_df.sort_values("adj_pval").head(20).index.tolist()
+        top5_genes = full_df.sort_values("adj_pval").head(5).index.tolist()
         plot_gene_boxplot(expression_df, gene_name=top5_genes[0], sample_info=sample_info, group_col=args.group_col)
 
 if __name__ == "__main__":
