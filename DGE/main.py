@@ -75,29 +75,29 @@ def main():
         top_genes = deg_df.head(20).index.tolist()
     
         print("Generating heatmap...")
-        plot_heatmap(z_expr, top_genes, metadata=sample_info, group_col=args.group_col)
+        plot_heatmap(expression_df, top_genes, metadata=sample_info, group_col=args.group_col)
     
         print("Generating volcano plot...")
-        plot_volcano(deg_df, title=f"Volcano Plot - {args.group_col}")
+        plot_volcano(expression_df, title=f"Volcano Plot - {args.group_col}")
     
         print("Generating PCA plot...")
-        plot_pca(z_expr, sample_info, group_col=args.group_col)
+        plot_pca(expression_df, sample_info, group_col=args.group_col)
     
         print(f"Generating boxplot for top DEG: {deg_df.index[0]}")
-        plot_gene_boxplot(log_expr, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
+        plot_gene_boxplot(expression_df, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
     else:
         print("⚠️ No significant DEGs found. Using top 20 genes by lowest adjusted p-value instead.")
         top_genes = deg_df.sort_values("adj_pval").head(20).index.tolist()
         print("Generating heatmap...")
-        plot_heatmap(z_expr, top_genes, metadata=sample_info, group_col=args.group_col)
+        plot_heatmap(expression_df, top_genes, metadata=sample_info, group_col=args.group_col)
     
         print("Generating volcano plot...")
-        plot_volcano(deg_df, title=f"Volcano Plot - {args.group_col}")
+        plot_volcano(expression_df, title=f"Volcano Plot - {args.group_col}")
     
         print("Generating PCA plot...")
-        plot_pca(z_expr, sample_info, group_col=args.group_col)
+        plot_pca(expression_df, sample_info, group_col=args.group_col)
     
         print(f"Generating boxplot for top DEG: {deg_df.index[0]}")
-        plot_gene_boxplot(log_expr, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
+        plot_gene_boxplot(expression_df, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
 if __name__ == "__main__":
     main()
