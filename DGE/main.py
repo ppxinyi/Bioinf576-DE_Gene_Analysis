@@ -97,8 +97,11 @@ def main():
     
         print("Generating PCA plot...")
         plot_pca(z_expr, sample_info, group_col=args.group_col)
-    
+        
         print(f"Generating boxplot for top DEG: {deg_df.index[0]}")
-        plot_gene_boxplot(expression_df, gene_name=deg_df.index[0], sample_info=sample_info, group_col=args.group_col)
+        if top_genes_in_expr:
+            plot_gene_boxplot(expression_df, gene_name=top_genes_in_expr[0], sample_info=sample_info, group_col=args.group_col)
+        else:
+            print("⚠️ No genes available for boxplot.")
 if __name__ == "__main__":
     main()
